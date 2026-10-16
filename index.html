@@ -57,12 +57,12 @@
             </a>
             
             <div class="hidden md:flex items-center gap-8 font-medium text-sm">
-                <a href="#beranda" class="hover:text-amber-400 transition-colors">Beranda</a>
+                <a href="#beranda" class="hover:text-amber-400 transition-colors">Beranda </a>
                 <a href="#tentang" class="hover:text-amber-400 transition-colors">Tentang Kami</a>
                 <a href="#menu" class="hover:text-amber-400 transition-colors">Menu Artisan</a>
                 <a href="#suasana" class="hover:text-amber-400 transition-colors">Suasana & Galeri</a>
                 <a href="#lokasi" class="hover:text-amber-400 transition-colors">Lokasi & Kontak</a>
-            </div>
+            </div
 
             <div class="flex items-center gap-4">
                 <button onclick="toggleCartModal()" class="relative p-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-stone-200 transition-colors border border-stone-800">
@@ -437,6 +437,107 @@
         </div>
     </div>
 
+    
+<!-- Modal Data Pengantaran -->
+<div id="delivery-modal"
+     class="fixed inset-0 z-[60] bg-stone-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
+
+  <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+
+    <div class="p-6 border-b border-stone-100 flex justify-between items-center">
+      <div>
+        <h3 class="font-serif text-xl font-bold text-stone-900">
+          Data Pengantaran
+        </h3>
+        <p class="text-sm text-stone-500 mt-1">
+          Lengkapi alamat agar kurir mudah menemukan lokasi Anda.
+        </p>
+      </div>
+      <button type="button" onclick="closeDeliveryModal()"
+              class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <form id="delivery-form" onsubmit="submitDeliveryOrder(event)"
+          class="p-6 space-y-4">
+
+      <div>
+        <label for="customer-name"
+               class="block text-sm font-semibold mb-2">
+          Nama Penerima *
+        </label>
+        <input id="customer-name" name="customerName" type="text"
+               autocomplete="name" required maxlength="100"
+               placeholder="Nama penerima pesanan"
+               class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600">
+      </div>
+
+      <div>
+        <label for="customer-phone"
+               class="block text-sm font-semibold mb-2">
+          Nomor HP Aktif *
+        </label>
+        <input id="customer-phone" name="customerPhone" type="tel"
+               autocomplete="tel" required maxlength="20"
+               placeholder="Contoh: 081234567890"
+               class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600">
+      </div>
+
+      <div>
+        <label for="delivery-address"
+               class="block text-sm font-semibold mb-2">
+          Alamat Lengkap Pengantaran *
+        </label>
+        <textarea id="delivery-address" name="address" required
+                  maxlength="500" rows="3"
+                  autocomplete="street-address"
+                  placeholder="Nama jalan, nomor rumah, dusun/perumahan, desa/kelurahan, kecamatan, dan kabupaten"
+                  class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600"></textarea>
+      </div>
+
+      <div>
+        <label for="delivery-landmark"
+               class="block text-sm font-semibold mb-2">
+          Patokan Lokasi *
+        </label>
+        <input id="delivery-landmark" name="landmark" type="text"
+               required maxlength="200"
+               placeholder="Contoh: dekat masjid, pagar hitam, rumah nomor 12"
+               class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600">
+      </div>
+
+      <div>
+        <label for="delivery-notes"
+               class="block text-sm font-semibold mb-2">
+          Catatan untuk Kurir (Opsional)
+        </label>
+        <textarea id="delivery-notes" name="notes" rows="2"
+                  maxlength="300"
+                  placeholder="Contoh: telepon saat tiba atau titip ke satpam"
+                  class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600"></textarea>
+      </div>
+
+      <p class="text-xs text-stone-500">
+        * Wajib diisi. Periksa kembali alamat dan patokan lokasi sebelum melanjutkan.
+      </p>
+
+      <button type="submit"
+              class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg flex items-center justify-center gap-2">
+        <i class="fa-brands fa-whatsapp text-xl"></i>
+        Lanjutkan ke WhatsApp
+      </button>
+
+      <button type="button" onclick="closeDeliveryModal()"
+              class="w-full py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold">
+        Kembali ke Keranjang
+      </button>
+
+    </form>
+  </div>
+</div>
+
+
     <div id="toast" class="fixed bottom-6 right-6 z-50 bg-stone-950 text-white px-6 py-3 rounded-2xl shadow-2xl border border-stone-700 transform translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-3">
         <i class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
         <span id="toast-message" class="text-sm font-medium">Berhasil ditambahkan ke keranjang!</span>
@@ -677,11 +778,88 @@
             }, 3000);
         }
 
-        function checkoutOrder() {
-            if(cart.length === 0) {
-                showToast("Keranjang Anda masih kosong!");
-                return;
-            }
+        
+function checkoutOrder() {
+    if (cart.length === 0) {
+        showToast("Keranjang Anda masih kosong!");
+        return;
+    }
+
+    const modal = document.getElementById('delivery-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+}
+
+function closeDeliveryModal() {
+    const modal = document.getElementById('delivery-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+}
+
+function submitDeliveryOrder(event) {
+    event.preventDefault();
+
+    if (cart.length === 0) {
+        showToast("Keranjang Anda masih kosong!");
+        closeDeliveryModal();
+        return;
+    }
+
+    const name = document.getElementById('customer-name').value.trim();
+    const phone = document.getElementById('customer-phone').value.trim();
+    const address = document.getElementById('delivery-address').value.trim();
+    const landmark = document.getElementById('delivery-landmark').value.trim();
+    const notes = document.getElementById('delivery-notes').value.trim();
+
+    // Validasi ulang sebelum membuat pesanan
+    if (!name || !phone || !address || !landmark) {
+        showToast("Mohon lengkapi semua data wajib!");
+        return;
+    }
+
+    // Susun daftar pesanan
+    let total = 0;
+    let orderText = "";
+
+    cart.forEach((item, index) => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+
+        orderText +=
+            `${index + 1}. ${item.name}\n` +
+            `   Jumlah: ${item.qty} x ${formatRupiah(item.price)}\n` +
+            `   Subtotal: ${formatRupiah(subtotal)}\n\n`;
+    });
+
+    // Susun pesan WhatsApp lengkap
+    const message =
+        `HALO KOPI SENJA NUSANTARA ☕\n` +
+        `Saya ingin memesan dengan pengantaran.\n\n` +
+        `=== DATA PELANGGAN ===\n` +
+        `Nama penerima: ${name}\n` +
+        `Nomor HP: ${phone}\n\n` +
+        `=== ALAMAT PENGANTARAN ===\n` +
+        `Alamat lengkap: ${address}\n` +
+        `Patokan lokasi: ${landmark}\n` +
+        `Catatan kurir: ${notes || "-"}\n\n` +
+        `=== DETAIL PESANAN ===\n` +
+        orderText +
+        `TOTAL MENU: ${formatRupiah(total)}\n` +
+        `(Ongkir dikonfirmasi oleh kedai)\n\n` +
+        `Mohon konfirmasi pesanan, ongkos kirim, dan estimasi pengantaran. Terima kasih!`;
+
+    const whatsappURL =
+        `https://wa.me/6283186879882?text=${encodeURIComponent(message)}`;
+
+    // Buka WhatsApp untuk ditinjau dan dikirim pelanggan
+    window.open(whatsappURL, '_blank');
+
+    closeDeliveryModal();
+
+    // Tutup keranjang
+    document.getElementById('cart-modal').classList.add('hidden');
+}
+
 
             let text = "Halo Kopi Senja Nusantara (083186879882), saya ingin memesan menu berikut:\n\n";
             let total = 0;
