@@ -1,893 +1,334 @@
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kopi Senja Nusantara - Artisan Coffee & Space</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                        serif: ['"Playfair Display"', 'serif'],
-                    },
-                    colors: {
-                        coffee: {
-                            50: '#fcf8f5',
-                            100: '#f4ede6',
-                            200: '#e6d7cc',
-                            300: '#d4bcab',
-                            400: '#bc9882',
-                            500: '#9e755b',
-                            600: '#835c44',
-                            700: '#6a4937',
-                            800: '#583c2f',
-                            900: '#483227',
-                            950: '#271a14',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        .hero-pattern {
-            background-image: linear-gradient(to bottom, rgba(39, 26, 20, 0.75), rgba(39, 26, 20, 0.90)), url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&q=80&w=1600');
-            background-size: cover;
-            background-position: center;
-        }
-        .rustic-border {
-            border-image: linear-gradient(to right, #835c44, #d4bcab) 1;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17130f">
+  <meta name="description" content="Kopi Senja Nusantara — kopi artisan, racikan khas, dan ruang nyaman di Kualanamu.">
+  <title>Kopi Senja Nusantara — A Little Pause, A Better Day</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['DM Sans','sans-serif'], serif: ['Playfair Display','serif'] },
+      colors: { ink:'#17130f', cream:'#f7f3ec', sand:'#e9dfd0', coffee:'#76513b', caramel:'#c88a50', olive:'#72745a' }
+    }}};
+  </script>
+  <style>
+    :root { color-scheme: light; }
+    body { background:#f7f3ec; }
+    .hero-bg { background-image: linear-gradient(90deg,rgba(23,19,15,.88) 0%,rgba(23,19,15,.58) 48%,rgba(23,19,15,.12) 100%),url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=85&w=2000'); background-size:cover;background-position:center; }
+    .grain:after { content:""; position:absolute; inset:0; pointer-events:none; opacity:.12; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E"); }
+    .menu-card img { transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+    .menu-card:hover img { transform:scale(1.06); }
+    .reveal { animation: rise .65s both; }
+    @keyframes rise { from { opacity:0; transform:translateY(14px) } to { opacity:1; transform:translateY(0) } }
+    .filter-btn[aria-pressed="true"] { background:#17130f;color:#fff; }
+    .focus-ring:focus-visible { outline:3px solid #c88a50; outline-offset:3px; }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important; } }
+  </style>
 </head>
-<body class="bg-coffee-50 text-stone-800 font-sans antialiased selection:bg-coffee-600 selection:text-white">
-
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-stone-950/90 backdrop-blur-md text-stone-100 border-b border-stone-800 transition-all duration-300" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-700 to-coffee-800 flex items-center justify-center text-white shadow-lg group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-mug-hot text-lg"></i>
-                </div>
-                <span class="font-serif text-2xl font-bold tracking-wide text-amber-50">Kopi <span class="text-amber-500 font-normal italic">Senja</span></span>
-            </a>
-            
-            <div class="hidden md:flex items-center gap-8 font-medium text-sm">
-                <a href="#beranda" class="hover:text-amber-400 transition-colors">Beranda </a>
-                <a href="#tentang" class="hover:text-amber-400 transition-colors">Tentang Kami</a>
-                <a href="#menu" class="hover:text-amber-400 transition-colors">Menu Artisan</a>
-                <a href="#suasana" class="hover:text-amber-400 transition-colors">Suasana & Galeri</a>
-                <a href="#lokasi" class="hover:text-amber-400 transition-colors">Lokasi & Kontak</a>
-            </div
-
-            <div class="flex items-center gap-4">
-                <button onclick="toggleCartModal()" class="relative p-2.5 rounded-full bg-stone-900 hover:bg-stone-800 text-stone-200 transition-colors border border-stone-800">
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-amber-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold hidden">0</span>
-                </button>
-                <a href="https://wa.me/6283186879882?text=Halo%20Kopi%20Senja%20Nusantara,%20saya%20ingin%20memesan%20kopi." target="_blank" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-amber-700 hover:bg-amber-600 text-white font-medium text-sm transition-all shadow-md gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Pesan WhatsApp</span>
-                </a>
-                <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 text-stone-300 hover:text-white">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-stone-950 border-b border-stone-800 px-6 py-4 space-y-3 font-medium">
-            <a href="#beranda" class="block py-2 hover:text-amber-400" onclick="toggleMobileMenu()">Beranda</a>
-            <a href="#tentang" class="block py-2 hover:text-amber-400" onclick="toggleMobileMenu()">Tentang Kami</a>
-            <a href="#menu" class="block py-2 hover:text-amber-400" onclick="toggleMobileMenu()">Menu Artisan</a>
-            <a href="#suasana" class="block py-2 hover:text-amber-400" onclick="toggleMobileMenu()">Suasana & Galeri</a>
-            <a href="#lokasi" class="block py-2 hover:text-amber-400" onclick="toggleMobileMenu()">Lokasi & Kontak</a>
-        </div>
-    </nav>
-
-    <section id="beranda" class="hero-pattern min-h-screen flex items-center justify-center text-center px-4 pt-20">
-        <div class="max-w-4xl mx-auto space-y-6 text-white py-20">
-            <span class="inline-block py-1.5 px-4 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs sm:text-sm font-semibold tracking-wider uppercase backdrop-blur-sm animate-pulse">
-                ☕ Kedai Kopi Artisan & Ruang Inspirasi Kualanamu
-            </span>
-            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-tight">
-                Cita Rasa Kopi Nusantara <br><span class="italic text-amber-400">Penuh Kehangatan</span>
-            </h1>
-            <p class="text-stone-300 text-base sm:text-lg max-w-2xl mx-auto font-light leading-relaxed">
-                Nikmati biji kopi pilihan petani lokal terbaik yang disangrai dengan presisi tinggi. Tempat bersantai sempurna di Jl. Emplasmen Kualanamu.
-            </p>
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-                <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-full bg-amber-700 hover:bg-amber-600 text-white font-semibold shadow-xl transition-all hover:scale-105 flex items-center justify-center gap-2">
-                    <span>Jelajahi Menu</span>
-                    <i class="fa-solid fa-arrow-right text-sm"></i>
-                </a>
-                <a href="https://wa.me/6283186879882?text=Halo%20Kopi%20Senja%20Nusantara,%20saya%20ingin%20reservasi%20meja." target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-stone-900/80 hover:bg-stone-900 text-white font-semibold backdrop-blur-md border border-stone-700 transition-all hover:border-amber-500 flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-amber-500 text-lg"></i>
-                    <span>Chat WhatsApp (0831-8687-9882)</span>
-                </a>
-            </div>
-            
-            <!-- Quick Features Bar -->
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 pt-12 max-w-3xl mx-auto text-left">
-                <div class="bg-stone-900/50 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-                        <i class="fa-solid fa-seedling"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xs text-stone-300 uppercase font-semibold">Biji Kopi</h4>
-                        <p class="text-sm font-bold text-white">100% Arabica & Robusta</p>
-                    </div>
-                </div>
-                <div class="bg-stone-900/50 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xs text-stone-300 uppercase font-semibold">Lokasi Kedai</h4>
-                        <p class="text-sm font-bold text-white">Jl. Emplasmen Kualanamu</p>
-                    </div>
-                </div>
-                <div class="col-span-2 md:col-span-1 bg-stone-900/50 backdrop-blur-md p-4 rounded-2xl border border-white/10 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center">
-                        <i class="fa-solid fa-clock"></i>
-                    </div>
-                    <div>
-                        <h4 class="text-xs text-stone-300 uppercase font-semibold">Jam Buka</h4>
-                        <p class="text-sm font-bold text-white">09:00 - 23:00 WIB</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="tentang" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                <div class="relative">
-                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
-                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?auto=format&fit=crop&q=80&w=800" alt="Barista making coffee" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <!-- Floating Badge -->
-                    <div class="absolute -bottom-6 -right-6 z-20 bg-stone-950 text-white p-6 rounded-3xl shadow-xl border border-stone-800 hidden sm:block">
-                        <p class="font-serif text-3xl font-bold text-amber-400">Artisan</p>
-                        <p class="text-xs text-stone-400 mt-1">Racikan Tangan Penuh Cinta</p>
-                    </div>
-                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-amber-100 rounded-full filter blur-2xl opacity-60"></div>
-                </div>
-                
-                <div class="space-y-6">
-                    <span class="text-amber-700 font-semibold text-sm uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Tentang Kedai Kami</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 leading-tight">
-                        Meracik Kebahagiaan di Setiap <span class="italic text-amber-700">Tetes Kopi</span>
-                    </h2>
-                    <p class="text-stone-600 leading-relaxed font-light">
-                        Kopi Senja Nusantara hadir di kawasan strategis Jl. Emplasmen Kualanamu sebagai destinasi utama bagi para pencinta kopi sejati. Kami memadukan konsep rustik industrial yang hangat dengan biji kopi pilihan langsung dari petani lokal Sumatera dan Nusantara.
-                    </p>
-                    <p class="text-stone-600 leading-relaxed font-light">
-                        Baik Anda sedang menunggu jadwal penerbangan, mencari tempat kerja yang tenang dengan Wi-Fi cepat, maupun ingin menghabiskan waktu bersama orang terkasih, kedai kami siap menyambut Anda dengan senyuman dan sajian terbaik.
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-6 pt-4 border-t border-stone-100">
-                        <div>
-                            <h3 class="font-serif text-2xl font-bold text-stone-900">0831-8687-9882</h3>
-                            <p class="text-sm text-stone-500 mt-1">WhatsApp Pemesanan & Info</p>
-                        </div>
-                        <div>
-                            <h3 class="font-serif text-2xl font-bold text-stone-900">100%</h3>
-                            <p class="text-sm text-stone-500 mt-1">Biji Kopi Pilihan Nusantara</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="menu" class="py-24 bg-stone-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-                <span class="text-amber-700 font-semibold text-sm uppercase tracking-widest bg-amber-200/50 px-3 py-1 rounded-full">Menu Artisan</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900">Pilihan Kopi & Hidangan Istimewa</h2>
-                <p class="text-stone-600 font-light">Pilih menu favorit Anda dan langsung pesan secara online via WhatsApp atau masukkan ke keranjang!</p>
-                
-                <!-- Filter Tabs -->
-                <div class="flex flex-wrap justify-center gap-2 pt-6">
-                    <button onclick="filterMenu('all')" class="menu-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-amber-700 text-white shadow-md" data-category="all">Semua Menu</button>
-                    <button onclick="filterMenu('coffee')" class="menu-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-stone-200" data-category="coffee">Kopi Klasik</button>
-                    <button onclick="filterMenu('signature')" class="menu-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-stone-200" data-category="signature">Signature Senja</button>
-                    <button onclick="filterMenu('non-coffee')" class="menu-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-stone-200" data-category="non-coffee">Non-Kopi</button>
-                    <button onclick="filterMenu('snack')" class="menu-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-stone-200" data-category="snack">Cemilan & Roti</button>
-                </div>
-            </div>
-
-            <!-- Menu Grid -->
-            <div id="menu-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Javascript will populate this -->
-            </div>
-        </div>
-    </section>
-
-    <section id="suasana" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-                <span class="text-amber-700 font-semibold text-sm uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full">Galeri Kedai</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900">Suasana Hangat & Nyaman</h2>
-                <p class="text-stone-600 font-light">Desain interior bergaya rustik artisan menciptakan ketenangan bagi setiap pengunjung.</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="group relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800" alt="Cafe interior" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <p class="text-white font-medium text-lg">Area Indoor Cozy & Ber-AC</p>
-                    </div>
-                </div>
-                <div class="group relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3]">
-                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=800" alt="Outdoor area" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <p class="text-white font-medium text-lg">Area Outdoor Semiterbuka</p>
-                    </div>
-                </div>
-                <div class="group relative rounded-3xl overflow-hidden shadow-lg aspect-[4/3] sm:col-span-2 lg:col-span-1">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800" alt="Bar counter" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                    <div class="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <p class="text-white font-medium text-lg">Bar Utama & Barista Profesional</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-stone-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
-                <span class="text-amber-400 font-semibold text-sm uppercase tracking-widest bg-amber-500/20 px-3 py-1 rounded-full">Testimoni</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-100">Apa Kata Pelanggan Setia Kami?</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-stone-800 p-8 rounded-3xl border border-stone-700/50 space-y-4">
-                    <div class="flex text-amber-400 gap-1 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-stone-300 font-light italic">"Lokasinya sangat strategis dekat Kualanamu. Kopi Susu Senja-nya juara banget, pas buat melepas lelah sebelum atau sesudah terbang!"</p>
-                    <div class="flex items-center gap-3 pt-2">
-                        <div class="w-10 h-10 rounded-full bg-amber-700 flex items-center justify-center font-bold text-white">AS</div>
-                        <div>
-                            <h4 class="font-semibold text-sm">Aris Setiawan</h4>
-                            <p class="text-xs text-stone-400">Traveler & Coffee Enthusiast</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-stone-800 p-8 rounded-3xl border border-stone-700/50 space-y-4">
-                    <div class="flex text-amber-400 gap-1 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-stone-300 font-light italic">"Suasana rustiknya dapet banget. Pesan lewat WhatsApp juga cepat direspon dan makanannya enak-enak."</p>
-                    <div class="flex items-center gap-3 pt-2">
-                        <div class="w-10 h-10 rounded-full bg-amber-600 flex items-center justify-center font-bold text-white">DR</div>
-                        <div>
-                            <h4 class="font-semibold text-sm">Dewi Ratnasari</h4>
-                            <p class="text-xs text-stone-400">Warga Lokal</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-stone-800 p-8 rounded-3xl border border-stone-700/50 space-y-4">
-                    <div class="flex text-amber-400 gap-1 text-sm">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                    </div>
-                    <p class="text-stone-300 font-light italic">"Manual brew V60 Gayo-nya mantap! Baristanya ramah dan paham betul soal karakteristik biji kopi."</p>
-                    <div class="flex items-center gap-3 pt-2">
-                        <div class="w-10 h-10 rounded-full bg-stone-700 flex items-center justify-center font-bold text-white">RK</div>
-                        <div>
-                            <h4 class="font-semibold text-sm">Rian Kurniawan</h4>
-                            <p class="text-xs text-stone-400">Pecinta Kopi</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="lokasi" class="py-24 bg-stone-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <span class="text-amber-700 font-semibold text-sm uppercase tracking-widest bg-amber-200/50 px-3 py-1 rounded-full">Kunjungi Kami</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-stone-900">Lokasi & Kontak Kedai</h2>
-                    <p class="text-stone-600 font-light leading-relaxed">
-                        Kami menantikan kehadiran Anda di kedai kami. Untuk pemesanan cepat, reservasi tempat, atau kerja sama, silakan hubungi nomor WhatsApp kami di bawah ini.
-                    </p>
-
-                    <div class="space-y-4 pt-2">
-                        <div class="flex items-start gap-4 bg-white p-4 rounded-2xl shadow-sm border border-stone-200">
-                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-location-dot text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-stone-900">Alamat Kedai</h4>
-                                <p class="text-sm text-stone-600 mt-0.5">Jl. Emplasmen Kualanamu, Deli Serdang, Sumatera Utara</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4 bg-white p-4 rounded-2xl shadow-sm border border-stone-200">
-                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-                                <i class="fa-brands fa-whatsapp text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-stone-900">WhatsApp Pemesanan</h4>
-                                <p class="text-sm text-stone-600 mt-0.5">0831-8687-9882 (Buka untuk Chat & Telepon)</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start gap-4 bg-white p-4 rounded-2xl shadow-sm border border-stone-200">
-                            <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
-                                <i class="fa-solid fa-clock text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-stone-900">Jam Operasional</h4>
-                                <p class="text-sm text-stone-600 mt-0.5">Setiap Hari: 09:00 - 23:00 WIB</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="pt-4">
-                        <a href="https://wa.me/6283186879882?text=Halo%20Kopi%20Senja%20Nusantara,%20saya%20ingin%20bertanya%20mengenai..." target="_blank" class="inline-flex items-center justify-center px-8 py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-base shadow-lg transition-all gap-3">
-                            <i class="fa-brands fa-whatsapp text-xl"></i>
-                            <span>Hubungi Langsung via WhatsApp</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Google Maps Placeholder Card -->
-                <div class="bg-white p-4 rounded-3xl shadow-xl border border-stone-200 aspect-[4/3] flex flex-col justify-center items-center text-center relative overflow-hidden group">
-                    <div class="absolute inset-0 bg-stone-900/10 z-10"></div>
-                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=800" alt="Map preview" class="absolute inset-0 w-full h-full object-cover filter saturate-50 group-hover:scale-105 transition-transform duration-700">
-                    <div class="relative z-20 bg-stone-950/90 backdrop-blur-md p-8 rounded-2xl text-white max-w-sm space-y-3 shadow-2xl border border-stone-800">
-                        <div class="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center mx-auto text-white text-xl">
-                            <i class="fa-solid fa-map-pin"></i>
-                        </div>
-                        <h3 class="font-serif text-xl font-bold">Kopi Senja Nusantara</h3>
-                        <p class="text-xs text-stone-300 font-light">Jl. Emplasmen Kualanamu</p>
-                        <a href="https://maps.google.com/?q=Jl.+Emplasmen+Kualanamu" target="_blank" class="inline-block px-5 py-2.5 rounded-xl bg-amber-700 hover:bg-amber-600 text-white font-semibold text-xs transition-colors">
-                            Buka di Google Maps
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-stone-950 text-stone-400 py-16 border-t border-stone-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10">
-            <div class="space-y-4 md:col-span-1">
-                <a href="#" class="flex items-center gap-2">
-                    <div class="w-8 h-8 rounded-lg bg-amber-600 flex items-center justify-center text-white font-bold">
-                        <i class="fa-solid fa-mug-hot"></i>
-                    </div>
-                    <span class="font-serif text-xl font-bold text-white">Kopi Senja</span>
-                </a>
-                <p class="text-sm font-light">Kedai kopi artisan pilihan di Jl. Emplasmen Kualanamu. Cita rasa lokal dalam suasana hangat.</p>
-                <div class="flex gap-4 text-stone-300">
-                    <a href="https://wa.me/6283186879882" target="_blank" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-amber-600 hover:text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="w-9 h-9 rounded-full bg-stone-900 hover:bg-amber-600 hover:text-white flex items-center justify-center transition-colors"><i class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Jam Operasional</h4>
-                <ul class="space-y-2 text-sm font-light">
-                    <li>Senin - Minggu: 09:00 - 23:00 WIB</li>
-                    <li class="text-amber-500 font-medium pt-1">Buka Setiap Hari</li>
-                </ul>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Kontak Cepat</h4>
-                <p class="text-sm font-light leading-relaxed">
-                    WhatsApp: <span class="text-white font-semibold">0831-8687-9882</span>
-                </p>
-                <p class="text-xs text-amber-500 mt-2 font-medium">Respon Cepat via WhatsApp</p>
-            </div>
-
-            <div>
-                <h4 class="font-bold text-white text-sm uppercase tracking-wider mb-4">Alamat</h4>
-                <p class="text-sm font-light leading-relaxed">
-                    Jl. Emplasmen Kualanamu, Deli Serdang, Sumatera Utara
-                </p>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-stone-900 text-center text-xs font-light">
-            &copy; 2026 Kopi Senja Nusantara. Seluruh Hak Cipta Dilindungi.
-        </div>
-    </footer>
-
-    <div id="cart-modal" class="fixed inset-0 z-50 bg-stone-950/70 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
-            <div class="p-6 border-b border-stone-100 flex items-center justify-between bg-stone-50">
-                <div class="flex items-center gap-2">
-                    <i class="fa-solid fa-cart-shopping text-amber-700"></i>
-                    <h3 class="font-serif text-xl font-bold text-stone-900">Keranjang Pesanan</h3>
-                </div>
-                <button onclick="toggleCartModal()" class="w-8 h-8 rounded-full bg-stone-200 hover:bg-stone-300 flex items-center justify-center text-stone-600 transition-colors">
-                    <i class="fa-solid fa-xmark"></i>
-                </button>
-            </div>
-
-            <div id="cart-items-container" class="p-6 overflow-y-auto flex-1 space-y-4">
-                <!-- Items injected via JS -->
-            </div>
-
-            <div class="p-6 border-t border-stone-100 bg-stone-50 space-y-4">
-                <div class="flex justify-between items-center text-base font-bold text-stone-900">
-                    <span>Total Pembayaran:</span>
-                    <span id="cart-total" class="text-amber-700 text-xl font-serif">Rp 0</span>
-                </div>
-                <button onclick="checkoutOrder()" class="w-full py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-lg transition-all flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Pesan Sekarang via WhatsApp (0831-8687-9882)</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    
-<!-- Modal Data Pengantaran -->
-<div id="delivery-modal"
-     class="fixed inset-0 z-[60] bg-stone-950/70 backdrop-blur-sm hidden items-center justify-center p-4">
-
-  <div class="bg-white rounded-3xl max-w-lg w-full max-h-[90vh] overflow-y-auto shadow-2xl">
-
-    <div class="p-6 border-b border-stone-100 flex justify-between items-center">
-      <div>
-        <h3 class="font-serif text-xl font-bold text-stone-900">
-          Data Pengantaran
-        </h3>
-        <p class="text-sm text-stone-500 mt-1">
-          Lengkapi alamat agar kurir mudah menemukan lokasi Anda.
-        </p>
-      </div>
-      <button type="button" onclick="closeDeliveryModal()"
-              class="w-9 h-9 rounded-full bg-stone-100 hover:bg-stone-200">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-    </div>
-
-    <form id="delivery-form" onsubmit="submitDeliveryOrder(event)"
-          class="p-6 space-y-4">
-
-      <div>
-        <label for="customer-name"
-               class="block text-sm font-semibold mb-2">
-          Nama Penerima *
-        </label>
-        <input id="customer-name" name="customerName" type="text"
-               autocomplete="name" required maxlength="100"
-               placeholder="Nama penerima pesanan"
-               class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600">
-      </div>
-
-      <div>
-        <label for="customer-phone"
-               class="block text-sm font-semibold mb-2">
-          Nomor HP Aktif *
-        </label>
-        <input id="customer-phone" name="customerPhone" type="tel"
-               autocomplete="tel" required maxlength="20"
-               placeholder="Contoh: 081234567890"
-               class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600">
-      </div>
-
-      <div>
-        <label for="delivery-address"
-               class="block text-sm font-semibold mb-2">
-          Alamat Lengkap Pengantaran *
-        </label>
-        <textarea id="delivery-address" name="address" required
-                  maxlength="500" rows="3"
-                  autocomplete="street-address"
-                  placeholder="Nama jalan, nomor rumah, dusun/perumahan, desa/kelurahan, kecamatan, dan kabupaten"
-                  class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600"></textarea>
-      </div>
-
-      <div>
-        <label for="delivery-landmark"
-               class="block text-sm font-semibold mb-2">
-          Patokan Lokasi *
-        </label>
-        <input id="delivery-landmark" name="landmark" type="text"
-               required maxlength="200"
-               placeholder="Contoh: dekat masjid, pagar hitam, rumah nomor 12"
-               class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600">
-      </div>
-
-      <div>
-        <label for="delivery-notes"
-               class="block text-sm font-semibold mb-2">
-          Catatan untuk Kurir (Opsional)
-        </label>
-        <textarea id="delivery-notes" name="notes" rows="2"
-                  maxlength="300"
-                  placeholder="Contoh: telepon saat tiba atau titip ke satpam"
-                  class="w-full border border-stone-300 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-amber-600"></textarea>
-      </div>
-
-      <p class="text-xs text-stone-500">
-        * Wajib diisi. Periksa kembali alamat dan patokan lokasi sebelum melanjutkan.
-      </p>
-
-      <button type="submit"
-              class="w-full py-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold shadow-lg flex items-center justify-center gap-2">
-        <i class="fa-brands fa-whatsapp text-xl"></i>
-        Lanjutkan ke WhatsApp
-      </button>
-
-      <button type="button" onclick="closeDeliveryModal()"
-              class="w-full py-3 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-700 font-semibold">
-        Kembali ke Keranjang
-      </button>
-
-    </form>
+<body class="font-sans text-ink antialiased selection:bg-caramel selection:text-white">
+  <div class="bg-ink text-cream text-xs sm:text-sm px-4 py-2.5 text-center tracking-wide">
+    <span class="text-caramel mr-2">✳</span> Ruang kecil untuk jeda yang berarti <span class="hidden sm:inline">— setiap hari, 09.00–23.00 WIB</span>
   </div>
-</div>
 
-
-    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-stone-950 text-white px-6 py-3 rounded-2xl shadow-2xl border border-stone-700 transform translate-y-24 opacity-0 transition-all duration-300 flex items-center gap-3">
-        <i class="fa-solid fa-circle-check text-amber-400 text-lg"></i>
-        <span id="toast-message" class="text-sm font-medium">Berhasil ditambahkan ke keranjang!</span>
+  <header id="header" class="sticky top-0 z-40 bg-cream/90 backdrop-blur-xl border-b border-ink/10 transition-shadow">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-[76px] flex items-center justify-between gap-4" aria-label="Navigasi utama">
+      <a href="#beranda" class="flex items-center gap-3 shrink-0 focus-ring rounded-lg" aria-label="Kopi Senja Nusantara, beranda">
+        <span class="w-11 h-11 rounded-full bg-ink text-caramel grid place-items-center text-lg"><i class="fa-solid fa-mug-hot"></i></span>
+        <span class="leading-tight"><span class="block font-serif text-xl sm:text-2xl font-semibold tracking-tight">kopi senja<span class="text-coffee">.</span></span><span class="block uppercase text-[9px] tracking-[.24em] text-ink/55 mt-0.5">Nusantara · Kualanamu</span></span>
+      </a>
+      <div class="hidden lg:flex items-center gap-8 text-sm text-ink/75">
+        <a class="hover:text-coffee transition" href="#cerita">Cerita Kami</a>
+        <a class="hover:text-coffee transition" href="#menu">Menu</a>
+        <a class="hover:text-coffee transition" href="#ruang">Ruang Senja</a>
+        <a class="hover:text-coffee transition" href="#kunjungi">Lokasi</a>
+      </div>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button id="cart-open" class="focus-ring relative w-11 h-11 rounded-full border border-ink/15 hover:bg-white transition grid place-items-center" aria-label="Buka keranjang">
+          <i class="fa-solid fa-bag-shopping"></i><span id="cart-badge" class="hidden absolute -top-1 -right-1 min-w-5 h-5 px-1 rounded-full bg-caramel text-white text-[10px] font-bold grid place-items-center">0</span>
+        </button>
+        <a href="https://wa.me/6283186879882?text=Halo%20Kopi%20Senja%20Nusantara%2C%20saya%20ingin%20bertanya." target="_blank" rel="noopener" class="focus-ring hidden sm:inline-flex items-center gap-2 rounded-full bg-ink text-white px-5 py-3 text-sm hover:bg-coffee transition">
+          <i class="fa-brands fa-whatsapp text-lg text-green-300"></i> Hubungi kami
+        </a>
+        <button id="mobile-open" class="focus-ring lg:hidden w-11 h-11 rounded-full hover:bg-white" aria-label="Buka menu navigasi" aria-expanded="false"><i class="fa-solid fa-bars text-lg"></i></button>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-ink/10 px-5 py-4 bg-cream">
+      <div class="grid gap-1 text-sm">
+        <a class="py-3" href="#cerita">Cerita Kami</a><a class="py-3" href="#menu">Menu</a><a class="py-3" href="#ruang">Ruang Senja</a><a class="py-3" href="#kunjungi">Lokasi & Kontak</a>
+        <a class="py-3 text-coffee font-semibold" href="https://wa.me/6283186879882" target="_blank" rel="noopener">Pesan via WhatsApp ↗</a>
+      </div>
     </div>
+  </header>
 
-    <script>
-        // Menu Data Store
-        const menuData = [
-            {
-                id: 1,
-                name: "Kopi Susu Senja Nusantara",
-                category: "signature",
-                price: 28000,
-                rating: 4.9,
-                image: "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=80&w=600",
-                description: "Espresso house blend, fresh milk, dan gula aren organik khas Sumatera."
-            },
-            {
-                id: 2,
-                name: "Caffè Latte Artisan",
-                category: "coffee",
-                price: 32000,
-                rating: 4.8,
-                image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=600",
-                description: "Perpaduan sempurna espresso single-origin dengan steamed milk hangat bertekstur silky."
-            },
-            {
-                id: 3,
-                name: "Manual Brew V60 Gayo",
-                category: "coffee",
-                price: 35000,
-                rating: 4.9,
-                image: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=600",
-                description: "Biji kopi Aceh Gayo berkualitas tinggi diseduh manual pour-over."
-            },
-            {
-                id: 4,
-                name: "Caramel Macchiato",
-                category: "signature",
-                price: 38000,
-                rating: 4.7,
-                image: "https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&q=80&w=600",
-                description: "Vanila, fresh milk, espresso shot, dan siraman saus karamel lezat."
-            },
-            {
-                id: 5,
-                name: "Matcha Latte Premium",
-                category: "non-coffee",
-                price: 34000,
-                rating: 4.8,
-                image: "https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=80&w=600",
-                description: "Bubuk matcha Jepang asli berpadu lembut dengan fresh milk creamy."
-            },
-            {
-                id: 6,
-                name: "Belgian Chocolate Regal",
-                category: "non-coffee",
-                price: 32000,
-                rating: 4.6,
-                image: "https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&q=80&w=600",
-                description: "Dark chocolate lezat dengan taburan biskuit marie regal renyah."
-            },
-            {
-                id: 7,
-                name: "Croissant Mentega Klasik",
-                category: "snack",
-                price: 25000,
-                rating: 4.8,
-                image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600",
-                description: "Pastry croissant hangat berlapis mentega pilihan, renyah di luar lembut di dalam."
-            },
-            {
-                id: 8,
-                name: "French Fries Truffle",
-                category: "snack",
-                price: 30000,
-                rating: 4.7,
-                image: "https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&q=80&w=600",
-                description: "Kentang goreng renyah disajikan dengan aroma minyak truffle harum dan keju."
-            }
-        ];
+  <main>
+    <section id="beranda" class="hero-bg grain relative min-h-[650px] lg:min-h-[740px] flex items-center text-white overflow-hidden">
+      <div class="relative z-10 max-w-7xl w-full mx-auto px-5 sm:px-8 lg:px-12 py-24">
+        <div class="max-w-3xl reveal">
+          <p class="inline-flex items-center gap-2 text-xs sm:text-sm uppercase tracking-[.2em] text-sand mb-7"><span class="w-7 h-px bg-caramel"></span> Coffee · Community · Slow living</p>
+          <h1 class="font-serif text-5xl sm:text-6xl lg:text-[86px] leading-[1.02] tracking-[-.04em]">Biar hari<br>berjalan <em class="text-caramel font-medium">perlahan.</em></h1>
+          <p class="mt-7 max-w-xl text-white/75 text-base sm:text-lg leading-8">Kopi pilihan Nusantara, diracik dengan hati. Singgah sejenak, temukan rasa favoritmu, lalu lanjutkan hari dengan cerita baru.</p>
+          <div class="mt-9 flex flex-col sm:flex-row gap-3">
+            <a href="#menu" class="focus-ring inline-flex justify-center items-center gap-3 bg-caramel hover:bg-[#b9783e] text-ink font-bold rounded-full px-7 py-4 transition">Jelajahi menu <i class="fa-solid fa-arrow-right text-sm"></i></a>
+            <a href="https://wa.me/6283186879882?text=Halo%20Kopi%20Senja%20Nusantara%2C%20saya%20ingin%20reservasi%20meja." target="_blank" rel="noopener" class="focus-ring inline-flex justify-center items-center gap-3 border border-white/35 hover:bg-white/10 rounded-full px-7 py-4 transition"><i class="fa-brands fa-whatsapp text-lg"></i> Tanya & reservasi</a>
+          </div>
+        </div>
+        <div class="mt-16 pt-6 border-t border-white/20 grid grid-cols-2 sm:grid-cols-3 gap-5 max-w-3xl text-sm">
+          <div class="flex gap-3 items-center"><span class="text-caramel text-xl"><i class="fa-solid fa-seedling"></i></span><div><p class="text-white/50 text-xs mb-1">Asal rasa</p><p class="font-medium">Kopi Nusantara</p></div></div>
+          <div class="flex gap-3 items-center"><span class="text-caramel text-xl"><i class="fa-regular fa-clock"></i></span><div><p class="text-white/50 text-xs mb-1">Setiap hari</p><p class="font-medium">09.00–23.00 WIB</p></div></div>
+          <div class="hidden sm:flex gap-3 items-center"><span class="text-caramel text-xl"><i class="fa-solid fa-location-dot"></i></span><div><p class="text-white/50 text-xs mb-1">Temukan kami</p><p class="font-medium">Kualanamu, Deli Serdang</p></div></div>
+        </div>
+      </div>
+      <div class="absolute bottom-10 right-8 hidden xl:flex items-center gap-3 [writing-mode:vertical-rl] text-[10px] tracking-[.25em] uppercase text-white/50"><span class="w-px h-12 bg-caramel"></span> Made for your pause</div>
+    </section>
 
-        let cart = [];
+    <section class="bg-sand/60 border-b border-ink/10">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-5 flex flex-wrap justify-center sm:justify-between gap-x-8 gap-y-3 text-xs sm:text-sm text-ink/70">
+        <span><i class="fa-solid fa-check text-coffee mr-2"></i> Diracik saat dipesan</span>
+        <span><i class="fa-solid fa-check text-coffee mr-2"></i> Pilihan kopi lokal</span>
+        <span><i class="fa-solid fa-check text-coffee mr-2"></i> Nyaman untuk rehat & bekerja</span>
+        <span><i class="fa-solid fa-check text-coffee mr-2"></i> Pesan mudah via WhatsApp</span>
+      </div>
+    </section>
 
-        function formatRupiah(number) {
-            return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(number);
-        }
+    <section id="cerita" class="py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div class="relative">
+          <img class="w-full aspect-[4/5] sm:aspect-[5/4] object-cover rounded-[2rem]" src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&q=85&w=1200" alt="Suasana kedai kopi dengan cahaya hangat" loading="lazy">
+          <div class="absolute -bottom-5 -right-3 sm:-right-6 bg-ink text-cream p-5 sm:p-7 rounded-2xl max-w-[210px] shadow-xl">
+            <p class="font-serif italic text-2xl text-caramel">Dari biji ke hati.</p><p class="text-xs text-white/60 mt-2 leading-5">Setiap cangkir punya kisahnya sendiri.</p>
+          </div>
+          <div class="absolute -top-4 -left-4 w-24 h-24 border border-caramel/60 rounded-full -z-10"></div>
+        </div>
+        <div class="pt-4 lg:pt-0">
+          <p class="uppercase tracking-[.22em] text-xs font-bold text-coffee">Cerita Kopi Senja</p>
+          <h2 class="font-serif text-4xl sm:text-5xl lg:text-6xl leading-tight mt-5">Bukan sekadar kopi.<br><em class="text-coffee">Ini waktu untukmu.</em></h2>
+          <p class="mt-7 text-ink/65 leading-8">Kopi Senja Nusantara adalah tempat untuk menikmati kopi, bertemu teman, menyelesaikan pekerjaan, atau sekadar mengambil jeda dari ramainya hari. Kami mengangkat cita rasa kopi Nusantara dalam suasana yang hangat dan santai.</p>
+          <p class="mt-4 text-ink/65 leading-8">Mampir sebelum perjalanan, singgah setelah beraktivitas, atau jadikan sudut favoritmu sebagai ruang untuk ide-ide baru.</p>
+          <div class="grid grid-cols-2 gap-6 border-t border-ink/10 mt-8 pt-7">
+            <div><p class="font-serif text-3xl">Lokal</p><p class="text-sm text-ink/55 mt-1">Terinspirasi kekayaan Nusantara</p></div>
+            <div><p class="font-serif text-3xl">Personal</p><p class="text-sm text-ink/55 mt-1">Dibuat untuk momenmu</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        function renderMenu(category = 'all') {
-            const grid = document.getElementById('menu-grid');
-            grid.innerHTML = '';
+    <section id="menu" class="bg-[#eee7dc] py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-10">
+          <div><p class="uppercase tracking-[.22em] text-xs font-bold text-coffee">Dari bar kami</p><h2 class="font-serif text-4xl sm:text-5xl mt-4">Temukan <em>favoritmu.</em></h2><p class="text-ink/60 mt-4 max-w-xl leading-7">Mulai dari kopi klasik hingga racikan khas Senja. Pilih menu, masukkan ke keranjang, lalu lanjutkan pesanan lewat WhatsApp.</p></div>
+          <p class="text-xs text-ink/50 max-w-xs leading-5">Harga dan ketersediaan menu dapat dikonfirmasi kembali kepada tim kedai.</p>
+        </div>
+        <div class="flex gap-2 overflow-x-auto pb-3 mb-7" role="group" aria-label="Filter kategori menu">
+          <button class="filter-btn focus-ring shrink-0 rounded-full border border-ink/15 px-5 py-2.5 text-sm transition" data-category="all" aria-pressed="true">Semua menu</button>
+          <button class="filter-btn focus-ring shrink-0 rounded-full border border-ink/15 px-5 py-2.5 text-sm transition" data-category="coffee" aria-pressed="false">Kopi klasik</button>
+          <button class="filter-btn focus-ring shrink-0 rounded-full border border-ink/15 px-5 py-2.5 text-sm transition" data-category="signature" aria-pressed="false">Signature Senja</button>
+          <button class="filter-btn focus-ring shrink-0 rounded-full border border-ink/15 px-5 py-2.5 text-sm transition" data-category="non-coffee" aria-pressed="false">Non-kopi</button>
+          <button class="filter-btn focus-ring shrink-0 rounded-full border border-ink/15 px-5 py-2.5 text-sm transition" data-category="snack" aria-pressed="false">Cemilan</button>
+        </div>
+        <div id="menu-grid" class="grid sm:grid-cols-2 xl:grid-cols-4 gap-5"></div>
+        <p class="mt-5 text-xs text-ink/50 leading-5"><i class="fa-solid fa-circle-info mr-1"></i> Daftar bahan merupakan komposisi contoh. Sesuaikan dengan resep dan merek bahan yang benar-benar digunakan. Jika memiliki alergi, konfirmasikan kembali kepada barista.</p>
+        <div class="mt-10 flex flex-col sm:flex-row justify-between items-center gap-4 rounded-2xl bg-cream p-5 sm:p-6">
+          <div class="flex items-center gap-3"><span class="w-11 h-11 rounded-full bg-sand grid place-items-center text-coffee"><i class="fa-solid fa-bag-shopping"></i></span><div><p class="font-semibold">Sudah tahu mau pesan apa?</p><p class="text-sm text-ink/55 mt-0.5">Isi keranjang dan lanjutkan dengan praktis.</p></div></div>
+          <button id="cart-open-bottom" class="focus-ring rounded-full bg-ink text-white px-6 py-3 text-sm font-semibold hover:bg-coffee transition">Lihat keranjang <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </div>
+      </div>
+    </section>
 
-            const filtered = category === 'all' ? menuData : menuData.filter(item => item.category === category);
+    <section id="ruang" class="py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+        <div class="max-w-2xl mb-10"><p class="uppercase tracking-[.22em] text-xs font-bold text-coffee">Ruang Senja</p><h2 class="font-serif text-4xl sm:text-5xl mt-4">Datang untuk kopi.<br><em>Tinggal untuk suasana.</em></h2></div>
+        <div class="grid md:grid-cols-12 gap-4">
+          <figure class="md:col-span-7 relative rounded-[1.75rem] overflow-hidden group min-h-[300px]"><img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=85&w=1200" alt="Interior kafe yang hangat" loading="lazy"><figcaption class="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white bg-gradient-to-t from-black/70 to-transparent"><p class="font-serif text-2xl">Sudut nyaman</p><p class="text-sm text-white/75 mt-1">Untuk obrolan panjang dan jeda singkat.</p></figcaption></figure>
+          <figure class="md:col-span-5 relative rounded-[1.75rem] overflow-hidden group min-h-[300px]"><img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition duration-700" src="https://images.unsplash.com/photo-1493857671505-72967e2e2760?auto=format&fit=crop&q=85&w=1000" alt="Meja kafe dengan kopi dan cahaya matahari" loading="lazy"><figcaption class="absolute inset-x-0 bottom-0 p-6 sm:p-8 text-white bg-gradient-to-t from-black/70 to-transparent"><p class="font-serif text-2xl">Ritme yang santai</p><p class="text-sm text-white/75 mt-1">Nikmati momen dengan caramu sendiri.</p></figcaption></figure>
+          <div class="md:col-span-12 bg-ink text-cream rounded-[1.75rem] p-7 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div><p class="text-caramel uppercase tracking-[.2em] text-xs font-bold">Tempatmu menunggu</p><h3 class="font-serif text-3xl sm:text-4xl mt-3">Perjalanan terasa lebih baik dengan kopi.</h3><p class="text-white/60 mt-3 max-w-2xl leading-7">Berlokasi di kawasan Emplasmen Kualanamu, Deli Serdang. Hubungi kami untuk menanyakan tempat, menu, atau reservasi.</p></div>
+            <a href="https://wa.me/6283186879882?text=Halo%20Kopi%20Senja%2C%20saya%20ingin%20bertanya%20tentang%20tempat." target="_blank" rel="noopener" class="focus-ring shrink-0 inline-flex justify-center items-center gap-2 rounded-full bg-caramel text-ink font-bold px-6 py-4 hover:bg-[#d49a63] transition"><i class="fa-brands fa-whatsapp text-xl"></i> Tanya via WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            filtered.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200 flex flex-col justify-between group';
-                card.innerHTML = `
-                    <div class="relative overflow-hidden aspect-[4/3]">
-                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/600x400/835c44/ffffff?text=Kopi+Senja'">
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-stone-900 flex items-center gap-1 shadow-md">
-                            <i class="fa-solid fa-star text-amber-500"></i>
-                            <span>${item.rating}</span>
-                        </div>
-                    </div>
-                    <div class="p-6 space-y-3 flex-1 flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-serif text-xl font-bold text-stone-900">${item.name}</h3>
-                            <p class="text-stone-500 text-sm mt-1 font-light line-clamp-2">${item.description}</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-4 border-t border-stone-100">
-                            <span class="font-bold text-amber-700 text-lg">${formatRupiah(item.price)}</span>
-                            <div class="flex items-center gap-2">
-                                <a href="https://wa.me/6283186879882?text=Halo%20Kopi%20Senja%20Nusantara,%20saya%20ingin%20memesan%20${encodeURIComponent(item.name)}" target="_blank" class="px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs transition-colors flex items-center gap-1 shadow-md" title="Pesan langsung WhatsApp">
-                                    <i class="fa-brands fa-whatsapp"></i>
-                                </a>
-                                <button onclick="addToCart(${item.id})" class="px-4 py-2 rounded-xl bg-stone-900 hover:bg-amber-700 text-white font-medium text-xs transition-colors flex items-center gap-1.5 shadow-md">
-                                    <i class="fa-solid fa-plus text-xs"></i>
-                                    <span>Tambah</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
+    <section id="kunjungi" class="bg-sand/60 py-20 sm:py-28">
+      <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 grid lg:grid-cols-2 gap-12 items-center">
+        <div><p class="uppercase tracking-[.22em] text-xs font-bold text-coffee">Temukan jalan ke sini</p><h2 class="font-serif text-4xl sm:text-5xl mt-4">Sampai jumpa<br><em>di Kopi Senja.</em></h2><p class="text-ink/60 leading-7 mt-5 max-w-lg">Mampir untuk menikmati kopi atau hubungi kami lebih dulu untuk informasi pesanan dan reservasi.</p>
+          <div class="mt-8 space-y-4">
+            <div class="flex gap-4 p-5 rounded-2xl bg-cream border border-ink/5"><span class="w-11 h-11 rounded-full bg-sand text-coffee grid place-items-center shrink-0"><i class="fa-solid fa-location-dot"></i></span><div><p class="font-semibold">Alamat</p><p class="text-sm text-ink/60 mt-1 leading-6">Jl. Emplasmen Kualanamu, Deli Serdang, Sumatera Utara</p></div></div>
+            <div class="flex gap-4 p-5 rounded-2xl bg-cream border border-ink/5"><span class="w-11 h-11 rounded-full bg-sand text-coffee grid place-items-center shrink-0"><i class="fa-regular fa-clock"></i></span><div><p class="font-semibold">Jam operasional</p><p class="text-sm text-ink/60 mt-1">Setiap hari · 09.00–23.00 WIB</p></div></div>
+            <div class="flex gap-4 p-5 rounded-2xl bg-cream border border-ink/5"><span class="w-11 h-11 rounded-full bg-sand text-coffee grid place-items-center shrink-0"><i class="fa-brands fa-whatsapp text-lg"></i></span><div><p class="font-semibold">WhatsApp</p><p class="text-sm text-ink/60 mt-1">0831-8687-9882</p><a class="text-sm text-coffee font-semibold mt-2 inline-block" href="https://wa.me/6283186879882" target="_blank" rel="noopener">Mulai percakapan ↗</a></div></div>
+          </div>
+        </div>
+        <div class="rounded-[2rem] overflow-hidden min-h-[420px] bg-[#ddd0bd] relative shadow-sm">
+          <iframe title="Peta lokasi sekitar Jl. Emplasmen Kualanamu" class="absolute inset-0 w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=Jl.%20Emplasmen%20Kualanamu%2C%20Deli%20Serdang%2C%20Sumatera%20Utara&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+          <a href="https://maps.google.com/?q=Jl.+Emplasmen+Kualanamu,+Deli+Serdang,+Sumatera+Utara" target="_blank" rel="noopener" class="focus-ring absolute bottom-4 left-4 right-4 sm:right-auto inline-flex items-center justify-center gap-2 bg-ink text-white rounded-full px-5 py-3 text-sm shadow-lg"><i class="fa-solid fa-diamond-turn-right text-caramel"></i> Buka petunjuk arah</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
-        function filterMenu(category) {
-            document.querySelectorAll('.menu-btn').forEach(btn => {
-                if(btn.dataset.category === category) {
-                    btn.className = 'menu-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-amber-700 text-white shadow-md';
-                } else {
-                    btn.className = 'menu-btn px-5 py-2 rounded-full text-sm font-semibold transition-all bg-white text-stone-700 hover:bg-stone-200';
-                }
-            });
-            renderMenu(category);
-        }
+  <footer class="bg-ink text-cream pt-14 pb-8">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 pb-12">
+        <div class="lg:col-span-2"><a href="#beranda" class="font-serif text-3xl">kopi senja<span class="text-caramel">.</span></a><p class="text-white/55 leading-7 mt-4 max-w-sm">Kopi artisan dan ruang untuk mengambil jeda. Dibuat dengan rasa, disajikan dengan hati di Kualanamu.</p><a href="https://wa.me/6283186879882" target="_blank" rel="noopener" class="inline-flex items-center gap-2 mt-5 text-sm text-caramel hover:text-white transition"><i class="fa-brands fa-whatsapp text-lg"></i> 0831-8687-9882</a></div>
+        <div><p class="uppercase tracking-[.18em] text-xs text-white/40 font-bold mb-4">Jelajahi</p><div class="space-y-3 text-sm text-white/70"><a class="block hover:text-caramel" href="#cerita">Cerita kami</a><a class="block hover:text-caramel" href="#menu">Menu artisan</a><a class="block hover:text-caramel" href="#ruang">Ruang Senja</a><a class="block hover:text-caramel" href="#kunjungi">Lokasi & kontak</a></div></div>
+        <div><p class="uppercase tracking-[.18em] text-xs text-white/40 font-bold mb-4">Kunjungi</p><p class="text-sm text-white/70 leading-6">Jl. Emplasmen Kualanamu<br>Deli Serdang, Sumatera Utara</p><p class="text-sm text-caramel mt-3">Setiap hari, 09.00–23.00 WIB</p></div>
+      </div>
+      <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs text-white/40"><p>© <span id="year"></span> Kopi Senja Nusantara. Seluruh hak cipta dilindungi.</p><p>Dibuat untuk menikmati jeda yang berarti.</p></div>
+    </div>
+  </footer>
 
-        function addToCart(id) {
-            const item = menuData.find(m => m.id === id);
-            const existing = cart.find(c => c.id === id);
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-[70] bg-ink text-white rounded-full px-5 py-3 shadow-xl text-sm opacity-0 pointer-events-none transition-opacity duration-200"></div>
 
-            if(existing) {
-                existing.qty += 1;
-            } else {
-                cart.push({ ...item, qty: 1 });
-            }
+  <div id="cart-modal" class="hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm p-3 sm:p-6 items-end sm:items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+    <div class="bg-cream w-full max-w-xl max-h-[92vh] rounded-[1.75rem] overflow-hidden flex flex-col shadow-2xl">
+      <div class="p-5 sm:p-6 border-b border-ink/10 flex justify-between items-center"><div><p class="text-xs uppercase tracking-[.18em] text-coffee font-bold">Pesananmu</p><h2 id="cart-title" class="font-serif text-2xl mt-1">Keranjang belanja</h2></div><button id="cart-close" class="focus-ring w-10 h-10 rounded-full hover:bg-sand" aria-label="Tutup keranjang"><i class="fa-solid fa-xmark"></i></button></div>
+      <div id="cart-items" class="p-5 sm:p-6 overflow-y-auto flex-1"></div>
+      <div class="p-5 sm:p-6 border-t border-ink/10 bg-white/60"><div class="flex justify-between items-center mb-4"><span class="text-sm text-ink/60">Total menu</span><strong id="cart-total" class="font-serif text-2xl">Rp0</strong></div><p class="text-xs text-ink/50 mb-4">Ongkos kirim belum termasuk dan akan dikonfirmasi oleh kedai.</p><button id="checkout" class="focus-ring w-full rounded-full bg-ink text-white py-4 font-semibold hover:bg-coffee transition"><i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Lanjutkan pesanan</button></div>
+    </div>
+  </div>
 
-            updateCartUI();
-            showToast(`"${item.name}" berhasil ditambahkan ke keranjang!`);
-        }
+  <div id="delivery-modal" class="hidden fixed inset-0 z-[60] bg-ink/60 backdrop-blur-sm p-3 sm:p-6 items-center justify-center" role="dialog" aria-modal="true" aria-labelledby="delivery-title">
+    <div class="bg-cream w-full max-w-lg max-h-[94vh] overflow-y-auto rounded-[1.75rem] shadow-2xl">
+      <div class="p-5 sm:p-6 border-b border-ink/10 flex justify-between items-center"><div><p class="text-xs uppercase tracking-[.18em] text-coffee font-bold">Satu langkah lagi</p><h2 id="delivery-title" class="font-serif text-2xl mt-1">Detail pemesanan</h2></div><button id="delivery-close" class="focus-ring w-10 h-10 rounded-full hover:bg-sand" aria-label="Tutup formulir"><i class="fa-solid fa-xmark"></i></button></div>
+      <form id="delivery-form" class="p-5 sm:p-6 space-y-4">
+        <p class="text-sm text-ink/60 leading-6">Isi detail berikut agar tim kami dapat membantu konfirmasi pesananmu melalui WhatsApp.</p>
+        <div><label for="customer-name" class="block text-sm font-semibold mb-1.5">Nama penerima <span class="text-coffee">*</span></label><input class="focus-ring w-full bg-white border border-ink/15 rounded-xl px-4 py-3" id="customer-name" name="customerName" autocomplete="name" required maxlength="100" placeholder="Nama lengkap"></div>
+        <div><label for="customer-phone" class="block text-sm font-semibold mb-1.5">Nomor HP aktif <span class="text-coffee">*</span></label><input class="focus-ring w-full bg-white border border-ink/15 rounded-xl px-4 py-3" id="customer-phone" name="customerPhone" autocomplete="tel" type="tel" required maxlength="25" placeholder="Contoh: 081234567890"></div>
+        <div><label for="delivery-address" class="block text-sm font-semibold mb-1.5">Alamat lengkap <span class="text-coffee">*</span></label><textarea class="focus-ring w-full bg-white border border-ink/15 rounded-xl px-4 py-3" id="delivery-address" name="address" autocomplete="street-address" required maxlength="500" rows="3" placeholder="Jalan, nomor rumah, desa/kelurahan, kecamatan"></textarea></div>
+        <div><label for="delivery-landmark" class="block text-sm font-semibold mb-1.5">Patokan lokasi <span class="text-coffee">*</span></label><input class="focus-ring w-full bg-white border border-ink/15 rounded-xl px-4 py-3" id="delivery-landmark" name="landmark" required maxlength="200" placeholder="Contoh: dekat masjid atau gerbang perumahan"></div>
+        <div><label for="delivery-notes" class="block text-sm font-semibold mb-1.5">Catatan untuk kedai/kurir <span class="text-ink/40 font-normal">(opsional)</span></label><textarea class="focus-ring w-full bg-white border border-ink/15 rounded-xl px-4 py-3" id="delivery-notes" name="notes" maxlength="300" rows="2" placeholder="Catatan tambahan"></textarea></div>
+        <button type="submit" class="focus-ring w-full rounded-full bg-[#19794b] text-white py-4 font-semibold hover:bg-[#14643d] transition"><i class="fa-brands fa-whatsapp mr-2 text-lg"></i> Kirim detail ke WhatsApp</button>
+        <button type="button" id="back-to-cart" class="focus-ring w-full rounded-full py-3 text-sm font-semibold hover:bg-sand transition">Kembali ke keranjang</button>
+        <p class="text-[11px] text-ink/45 leading-5">Website ini menyiapkan pesan WhatsApp; pesanan baru dikirim setelah Anda menekan tombol kirim di WhatsApp.</p>
+      </form>
+    </div>
+  </div>
 
-        function updateCartUI() {
-            const badge = document.getElementById('cart-badge');
-            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-
-            if(totalQty > 0) {
-                badge.innerText = totalQty;
-                badge.classList.remove('hidden');
-            } else {
-                badge.classList.add('hidden');
-            }
-
-            const container = document.getElementById('cart-items-container');
-            const totalEl = document.getElementById('cart-total');
-
-            if(cart.length === 0) {
-                container.innerHTML = `
-                    <div class="text-center py-12 space-y-3">
-                        <i class="fa-solid fa-mug-saucer text-4xl text-stone-300"></i>
-                        <p class="text-stone-500 text-sm">Keranjang Anda masih kosong.</p>
-                    </div>
-                `;
-                totalEl.innerText = formatRupiah(0);
-                return;
-            }
-
-            container.innerHTML = '';
-            let totalPrice = 0;
-
-            cart.forEach(item => {
-                totalPrice += item.price * item.qty;
-                const div = document.createElement('div');
-                div.className = 'flex items-center justify-between gap-4 py-3 border-b border-stone-100';
-                div.innerHTML = `
-                    <div class="flex items-center gap-3">
-                        <img src="${item.image}" class="w-14 h-14 object-cover rounded-xl" onerror="this.src='https://placehold.co/100x100/835c44/ffffff?text=Kopi'">
-                        <div>
-                            <h4 class="font-bold text-sm text-stone-900">${item.name}</h4>
-                            <p class="text-xs text-amber-700 font-semibold">${formatRupiah(item.price)}</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="flex items-center border border-stone-200 rounded-xl overflow-hidden bg-stone-50">
-                            <button onclick="changeQty(${item.id}, -1)" class="px-2.5 py-1 text-stone-600 hover:bg-stone-200 text-xs">-</button>
-                            <span class="px-3 text-xs font-bold">${item.qty}</span>
-                            <button onclick="changeQty(${item.id}, 1)" class="px-2.5 py-1 text-stone-600 hover:bg-stone-200 text-xs">+</button>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(div);
-            });
-
-            totalEl.innerText = formatRupiah(totalPrice);
-        }
-
-        function changeQty(id, delta) {
-            const item = cart.find(c => c.id === id);
-            if(item) {
-                item.qty += delta;
-                if(item.qty <= 0) {
-                    cart = cart.filter(c => c.id !== id);
-                }
-            }
-            updateCartUI();
-        }
-
-        function toggleCartModal() {
-            const modal = document.getElementById('cart-modal');
-            modal.classList.toggle('hidden');
-            updateCartUI();
-        }
-
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        function showToast(message) {
-            const toast = document.getElementById('toast');
-            const msgEl = document.getElementById('toast-message');
-            msgEl.innerText = message;
-
-            toast.classList.remove('translate-y-24', 'opacity-0');
-            setTimeout(() => {
-                toast.classList.add('translate-y-24', 'opacity-0');
-            }, 3000);
-        }
-
-        
-function checkoutOrder() {
-    if (cart.length === 0) {
-        showToast("Keranjang Anda masih kosong!");
-        return;
+  <script>
+    'use strict';
+    const WHATSAPP_NUMBER = '6283186879882';
+    const menuData = [
+      {id:1,name:'Kopi Susu Senja Nusantara',category:'signature',price:28000,rating:'Favorit',image:'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&q=85&w=700',description:'Espresso house blend, susu segar, dan gula aren khas.',ingredients:['Espresso house blend','Susu segar','Gula aren'],allergens:['Susu']},
+      {id:2,name:'Caffè Latte Artisan',category:'coffee',price:32000,rating:'Klasik',image:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=85&w=700',description:'Espresso berpadu susu bertekstur lembut.',ingredients:['Espresso','Susu segar steamed'],allergens:['Susu']},
+      {id:3,name:'Manual Brew V60 Gayo',category:'coffee',price:35000,rating:'Manual brew',image:'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=85&w=700',description:'Seduhan pour-over dengan karakter kopi Aceh Gayo.',ingredients:['Biji kopi Aceh Gayo','Air panas tersaring'],allergens:[]},
+      {id:4,name:'Caramel Macchiato',category:'signature',price:38000,rating:'Signature',image:'https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&q=85&w=700',description:'Espresso, susu, sentuhan vanila, dan karamel.',ingredients:['Espresso','Susu segar','Sirup vanila','Saus karamel'],allergens:['Susu']},
+      {id:5,name:'Matcha Latte Premium',category:'non-coffee',price:34000,rating:'Non-kopi',image:'https://images.unsplash.com/photo-1536256263959-770b48d82b0a?auto=format&fit=crop&q=85&w=700',description:'Matcha dengan susu creamy untuk jeda yang lembut.',ingredients:['Bubuk matcha','Susu segar','Pemanis (opsional)'],allergens:['Susu']},
+      {id:6,name:'Belgian Chocolate Regal',category:'non-coffee',price:32000,rating:'Non-kopi',image:'https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?auto=format&fit=crop&q=85&w=700',description:'Minuman cokelat dengan rasa pekat dan manis seimbang.',ingredients:['Cokelat / saus cokelat','Susu segar','Biskuit Regal (opsional topping)'],allergens:['Susu','Gluten (biskuit)']},
+      {id:7,name:'Croissant Mentega Klasik',category:'snack',price:25000,rating:'Bakery',image:'https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=85&w=700',description:'Pastry berlapis mentega, renyah di luar dan lembut di dalam.',ingredients:['Tepung terigu','Mentega','Susu','Ragi','Gula','Garam'],allergens:['Gluten (terigu)','Susu']},
+      {id:8,name:'French Fries Truffle',category:'snack',price:30000,rating:'Cemilan',image:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&q=85&w=700',description:'Kentang goreng renyah dengan sentuhan aroma truffle.',ingredients:['Kentang','Minyak goreng','Bumbu truffle','Garam'],allergens:['Periksa label bumbu yang digunakan']}
+    ];
+    let cart = [];
+    let toastTimer;
+    const rupiah = n => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n);
+    const $ = id => document.getElementById(id);
+    function safeText(value) {
+      return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
     }
-
-    const modal = document.getElementById('delivery-modal');
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-}
-
-function closeDeliveryModal() {
-    const modal = document.getElementById('delivery-modal');
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-}
-
-function submitDeliveryOrder(event) {
-    event.preventDefault();
-
-    if (cart.length === 0) {
-        showToast("Keranjang Anda masih kosong!");
-        closeDeliveryModal();
-        return;
+    function showToast(message) {
+      const el = $('toast'); el.textContent = message; el.classList.remove('opacity-0'); el.classList.add('opacity-100');
+      clearTimeout(toastTimer); toastTimer = setTimeout(() => {el.classList.add('opacity-0');el.classList.remove('opacity-100');}, 2600);
     }
-
-    const name = document.getElementById('customer-name').value.trim();
-    const phone = document.getElementById('customer-phone').value.trim();
-    const address = document.getElementById('delivery-address').value.trim();
-    const landmark = document.getElementById('delivery-landmark').value.trim();
-    const notes = document.getElementById('delivery-notes').value.trim();
-
-    // Validasi ulang sebelum membuat pesanan
-    if (!name || !phone || !address || !landmark) {
-        showToast("Mohon lengkapi semua data wajib!");
-        return;
+    function renderMenu(category='all') {
+      const grid = $('menu-grid');
+      const filtered = category === 'all' ? menuData : menuData.filter(item => item.category === category);
+      grid.innerHTML = filtered.map((item,index) => `
+        <article class="menu-card reveal bg-cream rounded-[1.5rem] overflow-hidden border border-ink/5 flex flex-col" style="animation-delay:${index*55}ms">
+          <div class="relative overflow-hidden aspect-[4/3] bg-sand">
+            <img src="${item.image}" alt="${safeText(item.name)}" class="w-full h-full object-cover" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/700x525/e9dfd0/17130f?text=Kopi+Senja'">
+            <span class="absolute top-3 left-3 bg-cream/95 text-ink text-[10px] uppercase tracking-wider font-bold rounded-full px-3 py-1.5">${safeText(item.rating)}</span>
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="font-serif text-xl leading-snug">${safeText(item.name)}</h3>
+            <p class="text-sm text-ink/55 leading-6 mt-2">${safeText(item.description)}</p>
+            <div class="mt-4 rounded-xl bg-sand/50 p-3">
+              <p class="text-[10px] uppercase tracking-[.16em] font-bold text-coffee mb-2"><i class="fa-solid fa-leaf mr-1"></i> Bahan / ingredients</p>
+              <p class="text-xs text-ink/75 leading-5">${item.ingredients.map(ingredient => safeText(ingredient)).join(' · ')}</p>
+              <p class="text-[10px] text-ink/50 leading-4 mt-2"><span class="font-semibold">Alergen:</span> ${item.allergens.length ? item.allergens.map(allergen => safeText(allergen)).join(', ') : 'Tidak ada alergen utama yang dicantumkan'}</p>
+            </div>
+            <div class="flex items-center justify-between gap-3 border-t border-ink/10 mt-5 pt-4">
+              <span class="font-bold text-coffee whitespace-nowrap">${rupiah(item.price)}</span>
+              <button class="focus-ring add-to-cart bg-ink text-white rounded-full px-4 py-2.5 text-xs font-semibold hover:bg-coffee transition" data-id="${item.id}"><i class="fa-solid fa-plus mr-1"></i> Tambah</button>
+            </div>
+          </div>
+        </article>`).join('');
+      grid.querySelectorAll('.add-to-cart').forEach(button => button.addEventListener('click', () => addToCart(Number(button.dataset.id))));
     }
-
-    // Susun daftar pesanan
-    let total = 0;
-    let orderText = "";
-
-    cart.forEach((item, index) => {
-        const subtotal = item.price * item.qty;
-        total += subtotal;
-
-        orderText +=
-            `${index + 1}. ${item.name}\n` +
-            `   Jumlah: ${item.qty} x ${formatRupiah(item.price)}\n` +
-            `   Subtotal: ${formatRupiah(subtotal)}\n\n`;
+    function addToCart(id) {
+      const item = menuData.find(product => product.id === id);
+      if (!item) return;
+      const existing = cart.find(product => product.id === id);
+      if (existing) existing.qty += 1; else cart.push({...item,qty:1});
+      updateCart(); showToast(item.name + ' ditambahkan ke keranjang.');
+    }
+    function changeQty(id,delta) {
+      const item = cart.find(product => product.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(product => product.id !== id);
+      updateCart();
+    }
+    function updateCart() {
+      const count = cart.reduce((sum,item) => sum + item.qty,0);
+      const badge = $('cart-badge'); badge.textContent = count; badge.classList.toggle('hidden',count===0);
+      if (!cart.length) {
+        $('cart-items').innerHTML = `<div class="text-center py-12"><span class="mx-auto w-16 h-16 rounded-full bg-sand grid place-items-center text-coffee text-2xl"><i class="fa-solid fa-bag-shopping"></i></span><p class="font-serif text-xl mt-4">Keranjangmu masih kosong.</p><p class="text-sm text-ink/55 mt-2">Pilih sesuatu yang enak dari menu kami.</p><button id="browse-menu" class="mt-5 text-sm font-bold text-coffee underline underline-offset-4">Jelajahi menu</button></div>`;
+        $('browse-menu').addEventListener('click',()=>{closeModal('cart-modal');$('menu').scrollIntoView({behavior:'smooth'});});
+      } else {
+        $('cart-items').innerHTML = cart.map(item => `<div class="flex items-center gap-3 py-4 border-b border-ink/10 last:border-0">
+          <img src="${item.image}" alt="" class="w-16 h-16 object-cover rounded-xl bg-sand" onerror="this.style.display='none'">
+          <div class="flex-1 min-w-0"><p class="font-semibold text-sm leading-5">${safeText(item.name)}</p><p class="text-sm text-coffee font-semibold mt-1">${rupiah(item.price)}</p></div>
+          <div class="flex items-center gap-2 bg-white rounded-full border border-ink/10 p-1"><button class="focus-ring qty-btn w-7 h-7 rounded-full hover:bg-sand" data-id="${item.id}" data-delta="-1" aria-label="Kurangi ${safeText(item.name)}">−</button><span class="text-sm font-bold min-w-4 text-center">${item.qty}</span><button class="focus-ring qty-btn w-7 h-7 rounded-full hover:bg-sand" data-id="${item.id}" data-delta="1" aria-label="Tambah ${safeText(item.name)}">+</button></div>
+        </div>`).join('');
+        $('cart-items').querySelectorAll('.qty-btn').forEach(button=>button.addEventListener('click',()=>changeQty(Number(button.dataset.id),Number(button.dataset.delta))));
+      }
+      $('cart-total').textContent = rupiah(cart.reduce((sum,item)=>sum+item.price*item.qty,0));
+      $('checkout').disabled = cart.length===0;
+      $('checkout').classList.toggle('opacity-50',cart.length===0);
+      $('checkout').classList.toggle('cursor-not-allowed',cart.length===0);
+    }
+    function openModal(id) { const el=$(id); el.classList.remove('hidden'); el.classList.add('flex'); document.body.style.overflow='hidden'; }
+    function closeModal(id) { const el=$(id); el.classList.add('hidden'); el.classList.remove('flex'); if ($('cart-modal').classList.contains('hidden') && $('delivery-modal').classList.contains('hidden')) document.body.style.overflow=''; }
+    function openCart(){updateCart();openModal('cart-modal');}
+    function startCheckout(){ if(!cart.length){showToast('Keranjang masih kosong.');return;} closeModal('cart-modal');openModal('delivery-modal'); }
+    function submitOrder(event) {
+      event.preventDefault();
+      if(!cart.length){showToast('Keranjang masih kosong.');closeModal('delivery-modal');return;}
+      const name=$('customer-name').value.trim(), phone=$('customer-phone').value.trim(), address=$('delivery-address').value.trim(), landmark=$('delivery-landmark').value.trim(), notes=$('delivery-notes').value.trim();
+      if(!name||!phone||!address||!landmark){showToast('Mohon lengkapi semua data wajib.');return;}
+      const total=cart.reduce((sum,item)=>sum+item.price*item.qty,0);
+      const lines=cart.map((item,i)=>`${i+1}. ${item.name}\n   ${item.qty} x ${rupiah(item.price)} = ${rupiah(item.qty*item.price)}`).join('\n');
+      const message=`HALO KOPI SENJA NUSANTARA ☕\nSaya ingin memesan dengan pengantaran.\n\nDATA PENERIMA\nNama: ${name}\nNomor HP: ${phone}\n\nALAMAT PENGANTARAN\n${address}\nPatokan: ${landmark}\nCatatan: ${notes||'-'}\n\nDETAIL PESANAN\n${lines}\n\nTOTAL MENU: ${rupiah(total)}\n(Ongkir dikonfirmasi oleh kedai)\n\nMohon konfirmasi pesanan dan estimasi pengantaran. Terima kasih!`;
+      const url=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(url,'_blank','noopener,noreferrer');
+      closeModal('delivery-modal');
+    }
+    document.querySelectorAll('.filter-btn').forEach(button=>button.addEventListener('click',()=>{
+      document.querySelectorAll('.filter-btn').forEach(btn=>btn.setAttribute('aria-pressed',String(btn===button)));
+      renderMenu(button.dataset.category);
+    }));
+    $('cart-open').addEventListener('click',openCart);
+    $('cart-open-bottom').addEventListener('click',openCart);
+    $('cart-close').addEventListener('click',()=>closeModal('cart-modal'));
+    $('checkout').addEventListener('click',startCheckout);
+    $('delivery-close').addEventListener('click',()=>closeModal('delivery-modal'));
+    $('back-to-cart').addEventListener('click',()=>{closeModal('delivery-modal');openCart();});
+    $('delivery-form').addEventListener('submit',submitOrder);
+    $('mobile-open').addEventListener('click',()=>{
+      const menu=$('mobile-menu'), button=$('mobile-open'), willOpen=menu.classList.contains('hidden');
+      menu.classList.toggle('hidden');button.setAttribute('aria-expanded',String(willOpen));
+      button.innerHTML=willOpen?'<i class="fa-solid fa-xmark text-lg"></i>':'<i class="fa-solid fa-bars text-lg"></i>';
     });
-
-    // Susun pesan WhatsApp lengkap
-    const message =
-        `HALO KOPI SENJA NUSANTARA ☕\n` +
-        `Saya ingin memesan dengan pengantaran.\n\n` +
-        `=== DATA PELANGGAN ===\n` +
-        `Nama penerima: ${name}\n` +
-        `Nomor HP: ${phone}\n\n` +
-        `=== ALAMAT PENGANTARAN ===\n` +
-        `Alamat lengkap: ${address}\n` +
-        `Patokan lokasi: ${landmark}\n` +
-        `Catatan kurir: ${notes || "-"}\n\n` +
-        `=== DETAIL PESANAN ===\n` +
-        orderText +
-        `TOTAL MENU: ${formatRupiah(total)}\n` +
-        `(Ongkir dikonfirmasi oleh kedai)\n\n` +
-        `Mohon konfirmasi pesanan, ongkos kirim, dan estimasi pengantaran. Terima kasih!`;
-
-    const whatsappURL =
-        `https://wa.me/6283186879882?text=${encodeURIComponent(message)}`;
-
-    // Buka WhatsApp untuk ditinjau dan dikirim pelanggan
-    window.open(whatsappURL, '_blank');
-
-    closeDeliveryModal();
-
-    // Tutup keranjang
-    document.getElementById('cart-modal').classList.add('hidden');
-}
-
-
-            let text = "Halo Kopi Senja Nusantara (083186879882), saya ingin memesan menu berikut:\n\n";
-            let total = 0;
-
-            cart.forEach((item, index) => {
-                const sub = item.price * item.qty;
-                total += sub;
-                text += `${index + 1}. ${item.name} (${item.qty}x) - ${formatRupiah(sub)}\n`;
-            });
-
-            text += `\n*Total Keseluruhan: ${formatRupiah(total)}*\n\nMohon diproses ya kak, terima kasih!`;
-
-            const encoded = encodeURIComponent(text);
-            window.open(`https://wa.me/6283186879882?text=${encoded}`, '_blank');
-        }
-
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if(window.scrollY > 50) {
-                nav.classList.add('shadow-xl', 'bg-stone-950/95');
-            } else {
-                nav.classList.remove('shadow-xl');
-            }
-        });
-
-        window.onload = function() {
-            renderMenu('all');
-        }
-    </script>
+    $('mobile-menu').querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{$('mobile-menu').classList.add('hidden');$('mobile-open').setAttribute('aria-expanded','false');$('mobile-open').innerHTML='<i class="fa-solid fa-bars text-lg"></i>';}));
+    ['cart-modal','delivery-modal'].forEach(id=>$(id).addEventListener('click',event=>{if(event.target===$(id))closeModal(id);}));
+    document.addEventListener('keydown',event=>{if(event.key==='Escape'){closeModal('delivery-modal');closeModal('cart-modal');}});
+    window.addEventListener('scroll',()=> $('header').classList.toggle('shadow-sm',window.scrollY>12),{passive:true});
+    $('year').textContent=new Date().getFullYear();
+    renderMenu();updateCart();
+  </script>
 </body>
 </html>
